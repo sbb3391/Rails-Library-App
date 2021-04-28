@@ -13,28 +13,32 @@
 ActiveRecord::Schema.define(version: 2021_04_26_092023) do
 
   create_table "album_transactions", force: :cascade do |t|
-    t.integer "transactions_id"
+    t.integer "library_transaction_id"
     t.integer "book_id"
     t.integer "transaction_length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_album_transactions_on_book_id"
-    t.index ["transactions_id"], name: "index_album_transactions_on_transactions_id"
+    t.index ["library_transaction_id"], name: "index_album_transactions_on_library_transaction_id"
   end
 
   create_table "albums", force: :cascade do |t|
+    t.string "artist"
+    t.string "genre"
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "book_transactions", force: :cascade do |t|
-    t.integer "transactions_id"
+    t.integer "library_transaction_id"
     t.integer "book_id"
     t.integer "transaction_length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_book_transactions_on_book_id"
-    t.index ["transactions_id"], name: "index_book_transactions_on_transactions_id"
+    t.index ["library_transaction_id"], name: "index_book_transactions_on_library_transaction_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -52,12 +56,12 @@ ActiveRecord::Schema.define(version: 2021_04_26_092023) do
     t.index ["user_id"], name: "index_libraries_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "library_transactions", force: :cascade do |t|
     t.integer "library_id"
     t.datetime "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["library_id"], name: "index_transactions_on_library_id"
+    t.index ["library_id"], name: "index_library_transactions_on_library_id"
   end
 
   create_table "users", force: :cascade do |t|

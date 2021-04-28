@@ -1,4 +1,4 @@
 class User < ApplicationRecord
   has_one :library
-  has_many :transactions, through: :library
+  has_secure_password
 end

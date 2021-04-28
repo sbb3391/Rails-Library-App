@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class LibraryTransaction < ApplicationRecord
   belongs_to :library
   has_many :book_transactions
   has_many :books, through: :book_transactions

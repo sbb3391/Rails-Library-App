@@ -1,0 +1,8 @@
+<% logged_in? %>
+
+<% else %>
+
+  <h1>Welcome to your media library. Sign up or log in -- then stay awhile.</h1>
+
+  <% form_with scope: :session, url: login_sessions_path %>
+<% end %>
