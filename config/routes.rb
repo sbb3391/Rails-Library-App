@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :sessions do 
     collection do 
       post :login
-      get :login_form
     end
 
     member do 
