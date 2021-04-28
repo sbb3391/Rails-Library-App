@@ -1,6 +1,6 @@
 <h1>Create your account:</h1>
 
-<%= form_with model: @account do |f| %>
+<%= form_with model: @user, url: users_path, method: :post do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %>
   <br><br>
