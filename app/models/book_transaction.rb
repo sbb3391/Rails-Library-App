@@ -1,4 +1,4 @@
 class BookTransaction < ApplicationRecord
   belongs_to :book
-  belongs_to :library_transaction
+  belongs_to :transaction
 end

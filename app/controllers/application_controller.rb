@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   def landing_page
     if session.include?(:user_id)
       @user = User.find_by(session[:user_id].to_s)
-      redirect_to libraries_path
+      redirect_to library_path(@user.library)
     else
       render "application/landing_page"
     end

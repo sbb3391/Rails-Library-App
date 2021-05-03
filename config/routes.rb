@@ -24,6 +24,11 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  resources :libraries
+  resources :libraries, only: [:show] do 
+
+    resources :transactions
+  end
+
+
 
 end

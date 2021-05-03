@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:show]
 
   def index
-
   end
 
   def new
@@ -13,12 +12,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      return redirect_to user_path(current_user)
+
+      # build was not working here. @user.library was returning nil, so I couldn't run build on it
+      Library.create(user_id: @user.id)
+      return redirect_to library_path(@user.library)
     else
-      byebug
       render :new, alert: "User could not be created."
     end
   
+
   end
 
   def show

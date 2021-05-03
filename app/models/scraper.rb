@@ -25,17 +25,26 @@ class Scraper
     doc_css.css('p')[4..86].each_with_index do |book, index|
       if index % 2 == 0 
         image_link = book.css('img').attr('src')
-        image_link ? books["#{count}"][:image] = image_link.value : nil
+        image_link ? books["#{count}"][:image_path] = image_link.value : nil
         count += 1 
       else
         count <= 40 ? books["#{count}"][:description] = book.text : nil
       end
     end
 
-    f = File.open("forty_books.txt", "w")
+    books.each do |book, attributes|
+      Book.create(attributes)
+    end
 
-    f.puts books
+
+    f = File.open("forty_books.txt", "w")
+    if f.read == nil 
+      f.puts books
+    end
+      
     f.close
+    
+
   end
 
 
