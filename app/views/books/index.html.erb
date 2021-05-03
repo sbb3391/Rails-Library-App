@@ -1,0 +1,9 @@
+<h1>Browse Through a List of All Books:</h1>
+
+<ul>
+  <% @books.order(:name).each do |book| %>
+    <li><%= book.title %></li>
+    <li><%= book.author %></li>
+    <li><%= book.description %></li>
+  <% end %>
+</ul>

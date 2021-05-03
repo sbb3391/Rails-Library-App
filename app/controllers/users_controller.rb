@@ -11,11 +11,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    byebug
     if @user.save
       session[:user_id] = @user.id
       return redirect_to user_path(current_user)
     else
+      byebug
       render :new, alert: "User could not be created."
     end
   

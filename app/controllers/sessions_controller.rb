@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    user = User.find_by_username(params[:session][:username])
+    @user = User.find_by_username(params[:session][:username])
 
     user = user.try(:authenticate, params[:session][:password])
 
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   
     session[:user_id] = user.id
 
-    redirect_to welcome_path
+    redirect_to "index"
   end
 
 end

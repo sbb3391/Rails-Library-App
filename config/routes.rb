@@ -19,5 +19,11 @@ Rails.application.routes.draw do
     member do 
     end
   end
+  
+  resources :books
+
+  resources :welcome
+
+  resources :libraries
 
 end
