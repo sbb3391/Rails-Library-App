@@ -1,12 +1,13 @@
 <h1>Browse Through a List of All Books:</h1>
 
+<% @books.order(:name).each do |book| %>
 <ul>
-  <% @books.order(:name).each do |book| %>
-    <li><%= book.title %></li>
+    <li><%= link_to "#{book.title}", book_path(book) %></li>
     <li><%= book.author %></li>
-    <li><%= book.description %></li>
     <li>
       <img src="<%= book.image_path %>" width="175" height="250">
     </li>
+
+    <%= button_to "Checkout Book", new_book_transaction_path %>
+  </ul>
   <% end %>
-</ul>

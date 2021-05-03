@@ -20,13 +20,12 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :books
+  resources :books 
 
   resources :welcome
 
-  resources :libraries, only: [:show] do 
-
-    resources :transactions
+  resources :libraries, only: [:show] do
+    resources :transactions, only: [:new, :create, :edit, :update, :delete]
   end
 
 

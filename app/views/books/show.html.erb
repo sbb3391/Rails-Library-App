@@ -1,0 +1,10 @@
+<ul>
+  <li><%= @book.title %></li>
+  <li><%= @book.author %></li>
+  <li><%= @book.description %></li>
+  <li>
+    <img src="<%= @book.image_path %>" width="175" height="250">
+  </li>
+</ul>
+
+<%= button_to "Checkout Book", new_library_transaction_path(library_id: @library.id) %>

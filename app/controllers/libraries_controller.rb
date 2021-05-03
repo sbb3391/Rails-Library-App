@@ -5,7 +5,6 @@ class LibrariesController < ApplicationController
   end
 
   def show 
-    byebug
     @user = User.find_by_id(session[:user_id].to_s)
     @library = @user.library
     

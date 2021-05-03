@@ -1,7 +1,6 @@
 <% if !@library.books.empty? %>
-  <ul>
+    <h1>Library Books:</h1>
     <%= render partial: "libraries/library_books", collection: @library.books, as: :book %>
-  </ul>
 <% else %>
   <h1>You have no media in your library.</h1>
 <% end %>
