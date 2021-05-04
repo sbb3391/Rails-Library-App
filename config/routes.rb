@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: "application#landing_page"
-
   resources :users do 
     collection do
     end
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
   resources :welcome
 
   resources :libraries, only: [:show] do
-    resources :transactions, only: [:new, :create, :edit, :update, :delete]
+    resources :media_transactions, only: [:new, :create] 
   end
 
 

@@ -1,10 +1,15 @@
-<ul>
-  <li><%= @book.title %></li>
-  <li><%= @book.author %></li>
-  <li><%= @book.description %></li>
-  <li>
-    <img src="<%= @book.image_path %>" width="175" height="250">
-  </li>
-</ul>
+<div style="width: 50%;">
+  <ul>
+    <li><%= @book.title %></li>
+    <li><%= @book.author %></li>
+    <li style="white-space:pre-wrap"><%= @book.description %></li>
+    <li>
+      <img src="<%= @book.image_path %>" width="175" height="250">
+    </li>
+  </ul>
 
-<%= button_to "Checkout Book", new_library_transaction_path(library_id: @library.id) %>
+  <%= form_with model: @book, url: new_library_media_transaction_path(library_id: @library.id), method: :get do |f| %>
+    <%= f.hidden_field(:id) %>
+    <%= f.submit "Checkout Book" %>
+  <% end %>
+</div>

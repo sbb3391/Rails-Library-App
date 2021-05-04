@@ -26,26 +26,30 @@ class Scraper
       if index % 2 == 0 
         image_link = book.css('img').attr('src')
         image_link ? books["#{count}"][:image_path] = image_link.value : nil
-        count += 1 
       else
         count <= 40 ? books["#{count}"][:description] = book.text : nil
+        count += 1 
       end
     end
 
-    books.each do |book, attributes|
-      Book.create(attributes)
-    end
+    # books.each do |book, attributes|
+    #   Book.create(attributes)
+    # end
 
-
-    f = File.open("forty_books.txt", "w")
-    if f.read == nil 
-      f.puts books
-    end
+    # f = File.open("forty_books.txt", "w")
+    # if f.read == nil 
+    #   f.puts books
+    # end
       
-    f.close
-    
+    # f.close
+    books
 
   end
 
+  def self.create_books_from_scrape(book_hash)
+    book_hash.each do |book, attributes|
+      Book.create(attributes)
+    end
+  end
 
 end

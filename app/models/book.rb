@@ -1,7 +1,8 @@
 class Book < ApplicationRecord
-  belongs_to :library
+  belongs_to :library, optional: :true
+  belongs_to :user, optional: :true
   has_many :book_transactions
-  has_many :transactions, through: :book_transactions
+  has_many :media_transactions, through: :book_transactions
 
 
   def checked_out?

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       Library.create(user_id: @user.id)
       return redirect_to library_path(@user.library)
     else
-      render :new, alert: "User could not be created."
+      render :new
     end
   
 
@@ -31,10 +31,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :public)
-  end
-
-  def require_login
-    redirect_to login_path, alert: "You must be logged in to view this page." unless logged_in?
   end
 
 end

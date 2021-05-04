@@ -1,12 +1,11 @@
 class LibrariesController < ApplicationController
+  before_action :require_login, only: [:index, :show]
+  before_action :current_user
 
   def index
-    @user = User.find_by(session[:user_id].to_s)
   end
 
-  def show 
-    @user = User.find_by_id(session[:user_id].to_s)
+  def show
     @library = @user.library
-    
   end
 end

@@ -1,9 +1,0 @@
-<h1>Checkout Form:</h1>
-
-<%= form_with url: new_library_transaction_path do |f| %>
-  <%= f.label :book %>
-  <%= f.text_field :book %>
-  <br><br>
-  <%= f.label :length %>
-  <%= f.select :length, options_for_select(["Select your reservation length", "7", "14", "21"], :disabled => ["Select your reservation length"]) %>
-<% end %>
