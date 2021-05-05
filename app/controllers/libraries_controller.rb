@@ -6,7 +6,6 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    byebug
     @library = @user.library
   end
 end

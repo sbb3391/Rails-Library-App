@@ -8,7 +8,6 @@ module BooksHelper
   end
 
   def reserved_until(book)
-    byebug
     book.book_transactions.last.reservation_end_date.strftime("%m-%d-%Y")
   end
 
