@@ -1,6 +1,8 @@
 <% if !@library.books.empty? %>
-    <h1>My Books:</h1>
+  <div class="w-10/12 mx-auto my-4 overflow-auto flex flex-wrap">
+    <h1 class="text-center">My Books:</h1>
     <%= render partial: "libraries/library_books", collection: @library.books, as: :book %>
+  </div>
 <% else %>
   <h1>You have no media in your library.</h1>
 <% end %>

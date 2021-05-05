@@ -3,7 +3,7 @@ module BooksHelper
     if book.checked_out?
       "This is the class info for a book that's already reserved"
     else
-      "mt-6 p-2 bg-indigo-400 text-white rounded-xl cursor-pointer"
+      "mt-6 p-2 bg-indigo-400 text-lg text-white rounded-xl cursor-pointer"
     end
   end
 end

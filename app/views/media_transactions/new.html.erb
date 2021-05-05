@@ -1,13 +1,20 @@
-<h1>Checkout Form:</h1>
+<div class="w-full h-full flex justify-center">
+  <div class="w-8/12 flex flex-col">
+    <h1 class="text-center">Checkout Form:</h1>
 
-<h1><%= @book.title %></h1>
-<%= form_with model: @transaction, url: library_media_transactions_path do |f| %>
-  <%= hidden_field_tag("book_id", @book.id) %>
-  <%= hidden_field_tag("library_id", @library_id) %>
-  <%= f.fields_for :book_transaction do |t| %>
-    Length: <%= t.select :length_days, options_for_select(["Select your reservation length", "7", "14", "21"], :disabled => ["Select your reservation length"]) %>
-  <% end %>
-  <br><br>
-  <%= f.submit "Complete Transaction" %>
+    <p class="mt-4 mb-1 text-xl italic"><%= @book.title %></p>
+    <p class="mb-4 text-lg">by: <%=@book.author %></p>
+    <%= form_with model: @transaction, url: library_media_transactions_path do |f| %>
+      <%= hidden_field_tag("book_id", @book.id) %>
+      <%= hidden_field_tag("library_id", @library_id) %>
+      <%= f.fields_for :book_transaction do |t| %>
+        <div class="flex flex-col mb-4">
+          <%= t.label :length_days, "Transaction Length", class: "uppercase font-bold text-lg text-grey-darkest mb-1" %>
+          <%= t.select :length_days, options_for_select(["Select your reservation length", "7", "14", "21"], :disabled => ["Select your reservation length"]), {}, { class: "w-5/12 pl-2 border border-black rounded font-bold" } %>
+        </div>
+        <% end %>
+      <%= f.submit "Complete Transaction", class: "p-2 bg-indigo-400 text-lg text-white rounded-xl cursor-pointer" %>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
