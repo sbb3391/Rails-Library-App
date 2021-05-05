@@ -1,15 +1,15 @@
-<div style="width: 50%;">
-  <ul>
-    <li><%= @book.title %></li>
-    <li><%= @book.author %></li>
-    <li style="white-space:pre-wrap"><%= @book.description %></li>
-    <li>
-      <img src="<%= @book.image_path %>" width="175" height="250">
-    </li>
-  </ul>
-
-  <%= form_with model: @book, url: new_library_media_transaction_path(library_id: @library.id), html: { class: "#{checkout_class(@book)}" }, method: :get do |f| %>
-    <%= f.hidden_field(:id) %>
-    <%= f.submit "Checkout Book" %>
-  <% end %>
+<div class="w-screen h-screen flex justify-center">
+  <div class="w-8/12 flex flex-col">
+    <h1 class="text-center italic text-6xl my-8"><%= @book.title %></h1>
+    <h3 class="text-center font-bold text-3xl mb-8"><%= @book.author %></h3>
+    <p class="whitespace-pre-wrap text-xl mx-12 mb-8"><%= @book.description %></p>
+    <img class="mx-auto" src="<%= @book.image_path %>" width="175" height="250">
+    <div class="flex justify-center">
+      <%= form_with model: @book, url: new_library_media_transaction_path(library_id: @library.id), method: :get do |f| %>
+        <%= f.hidden_field(:id) %>
+        <%= f.submit "Checkout Book", class: "#{checkout_class(@book)}" %>
+      <% end %>
+    </div>
+  
+  </div>
 </div>
