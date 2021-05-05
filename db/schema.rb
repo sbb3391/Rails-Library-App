@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_093705) do
+ActiveRecord::Schema.define(version: 2021_05_05_035729) do
 
   create_table "album_transactions", force: :cascade do |t|
     t.integer "library_transaction_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_093705) do
     t.integer "length_days"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reservation_end_date"
     t.index ["book_id"], name: "index_book_transactions_on_book_id"
     t.index ["media_transaction_id"], name: "index_book_transactions_on_media_transaction_id"
   end

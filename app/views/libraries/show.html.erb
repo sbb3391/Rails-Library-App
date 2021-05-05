@@ -1,6 +1,6 @@
 <% if !@library.books.empty? %>
+  <h1 class="text-center">My Books:</h1>
   <div class="w-10/12 mx-auto my-4 overflow-auto flex flex-wrap">
-    <h1 class="text-center">My Books:</h1>
     <%= render partial: "libraries/library_books", collection: @library.books, as: :book %>
   </div>
 <% else %>
