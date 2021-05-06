@@ -1,26 +1,33 @@
 class MediaTransactionsController < ApplicationController
   def new
-    @transaction = MediaTransaction.new()
-    @library_id = params[:library_id]
+    @library = Library.find(params[:library_id])
+    @media_transaction = @library.media_transactions.build
+    @book_transaction = @media_transaction.book_transactions.build
     @book = Book.find(params["book"]["id"])
   end
 
   def create 
+    binding.pry
     lib = Library.find(params[:library_id])
+    transaction_params = params[:media_transaction][:book_transactions_attributes]["0"]
+    transaction_params[:reservation_end_date] = (Date.current + transaction_params[:length_days].to_i).to_time
 
-    book_transaction = BookTransaction.new(book_id: params[:book_id], length_days: params[:media_transaction][:book_transaction][:length_days].to_i)
-    book_transaction.reservation_end_date = (Date.current + book_transaction.length_days).to_time 
-    book_transaction.save
+    media_transaction = lib.media_transactions.build(media_transaction_params)
+    media_transaction.save
+    # book_transaction = media_transaction.book_transactions.build(media_transaction_params)
     
-    t = book_transaction.build_media_transaction(library_id: lib.id)
-    t.save
-    
-    Book.find_by_id(params[:book_id]).update(library_id: lib.id)
+    Book.find_by_id(transaction_params[:book_id]).update(library_id: lib.id)
 
     return redirect_to library_path(lib)
   end
 
   def show
 
+  end
+
+  private
+
+  def media_transaction_params
+    params.require(:media_transaction).permit(:libary_id, :reservation_end_date, book_transactions_attributes: [:length_days, :book_id, :reservation_end_date])
   end
 end

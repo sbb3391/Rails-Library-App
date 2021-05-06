@@ -4,11 +4,10 @@
 
     <p class="mt-4 mb-1 text-xl italic"><%= @book.title %></p>
     <p class="mb-4 text-lg">by: <%=@book.author %></p>
-    <%= form_with model: @transaction, url: library_media_transactions_path do |f| %>
-      <%= hidden_field_tag("book_id", @book.id) %>
-      <%= hidden_field_tag("library_id", @library_id) %>
-      <%= f.fields_for :book_transaction do |t| %>
+    <%= form_with model: @media_transaction, url: library_media_transactions_path(@library) do |f| %>
+      <%= f.fields_for :book_transactions do |t| %>
         <div class="flex flex-col mb-4">
+          <%= t.hidden_field :book_id, value: @book.id %>
           <%= t.label :length_days, "Transaction Length", class: "uppercase font-bold text-lg text-grey-darkest mb-1" %>
           <%= t.select :length_days, options_for_select(["Select your reservation length", "7", "14", "21"], :disabled => ["Select your reservation length"]), {}, { class: "w-5/12 pl-2 border border-black rounded font-bold" } %>
         </div>

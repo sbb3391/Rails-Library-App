@@ -2,10 +2,11 @@
 
 <div class="w-10/12 mx-auto my-4 overflow-auto flex flex-wrap">
 <% @books.order(:name).each do |book| %>
-  <div class="bg-gray-100 w-4/12 h-auto mx-24 my-8 border-black border-2 rounded-xl" >
+  <div class="bg-gray-100 w-3/12 h-auto mx-12 my-8 border-black border-2 rounded-xl" >
     <h2 class="text-blue-700 my-4 text-center text-3xl italic"><%= link_to "#{book.title}", book_path(book) %></h1>
     <h3 class="mb-4 text-center font-bold"><%= book.author %></h3>
-    <img class="mx-auto mb-6" src="<%= book.image_path %>" width="175" height="250">
+    <!-- <p><%= availability(book) %></p> -->
+    <img class="mx-auto mb-6" src="<%= book.image_path %>" width="125" height="200">
     
   </div>
   <% end %>

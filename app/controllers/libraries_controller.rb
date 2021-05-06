@@ -6,6 +6,7 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    @library = @user.library
+    binding.pry
+    @library = Library.find_by_id(params[:id])
   end
 end

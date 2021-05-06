@@ -5,9 +5,9 @@
     <p class="whitespace-pre-wrap text-xl mx-10 mb-6"><%= @book.description %></p>
     <img class="mx-auto" src="<%= @book.image_path %>" width="225" height="300">
     <div class="flex justify-center">
-      <%= form_with model: @book, url: new_library_media_transaction_path(library_id: @library.id), method: :get do |f| %>
+      <%= form_with model: @book, url: new_library_media_transaction_path(library_id: @library.id), method: :get, disabled: disable_checkout_button?(@book) do |f| %>
         <%= f.hidden_field(:id) %>
-        <%= f.submit "Checkout Book", class: "#{checkout_class(@book)}" %>
+        <%= f.submit checkout_button_text(@book), class: "#{checkout_class(@book)}" %>
       <% end %>
     </div>
   
