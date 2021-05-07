@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   resources :welcome
 
   resources :libraries, only: [:show] do
+    collection do
+      get :invalid
+    end
+    
     resources :media_transactions, only: [:new, :create] 
   end
 

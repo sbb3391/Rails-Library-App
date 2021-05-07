@@ -6,7 +6,16 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    binding.pry
     @library = Library.find_by_id(params[:id])
+
+    if @library.user == @user
+      render "libraries/#{@library.id}"
+    else
+      redirect_to invalid_libraries_path
+    end
+  end
+
+  def invalid
+    binding.pry
   end
 end
