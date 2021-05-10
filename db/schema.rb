@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_035729) do
+ActiveRecord::Schema.define(version: 2021_05_09_144646) do
 
   create_table "album_transactions", force: :cascade do |t|
     t.integer "library_transaction_id"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_05_05_035729) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
 end
