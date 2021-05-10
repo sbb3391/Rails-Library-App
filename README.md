@@ -1,24 +1,27 @@
-# README
+#Sinatra Flatiron Project - Mod2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##General Information
 
-Things you may want to cover:
+This application is 
 
-* Ruby version
+##Technologies  
+* Rails
+* Bcrypt
+* Google Omniauth
+* Sqlite 3
+* Tailwind CSS
 
-* System dependencies
+##Setup
 
-* Configuration
+To run this program, navigate to the root of the directory. run 'bundle install' and then start your server by running 'rails s' in the terminal.
 
-* Database creation
+In your web browser go to 'localhost:3000.' You will be prompted to create an account.
 
-* Database initialization
+You will then be routed to a page showing your library of books, which will be empty. Navigate to the books page to view all the available books which can be added to your library.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+
+
