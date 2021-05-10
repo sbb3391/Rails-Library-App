@@ -12,6 +12,25 @@
   </head>
 
   <body>
+    <div class="w-screen h-12 bg-blue-200 flex justify-around">
+      <div>
+        All Books
+      </div>
+      <div>
+        New Book
+      </div>
+      <div>
+        Library
+      </div>
+      <% if session[:user_id] %>
+        <div>
+          <%= link_to("Logout", 'sessions/logout') %>
+        </div>
+        <div>
+      <% end %>
+        
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 
   def index
-    byebug
     @books = Book.all
   end
 

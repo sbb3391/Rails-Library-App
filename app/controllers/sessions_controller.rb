@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
       u.password = SecureRandom.hex(15)
     end
 
-    binding.pry
     if user.valid?
       Library.create(user_id: user.id)
       session[:user_id] = user.id
@@ -33,9 +32,9 @@ class SessionsController < ApplicationController
   end
 
   # logout
-  def destroy
+  def logout
     session.delete(:user_id)
-    redirect_to 
+    redirect_to root_path
   end
 
 end
