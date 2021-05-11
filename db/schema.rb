@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_09_144646) do
+ActiveRecord::Schema.define(version: 2021_05_11_214103) do
 
   create_table "album_transactions", force: :cascade do |t|
     t.integer "library_transaction_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_05_09_144646) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_path", default: "https://www.anglo-egyptian.com/books_posters/defbookcover.jpg?v=1528540330"
     t.integer "library_id"
+    t.integer "created_by_user_id"
   end
 
   create_table "libraries", force: :cascade do |t|

@@ -8,7 +8,9 @@
     <p class="<%= availability_class(book) %>"><%= availability(book) %></p>
     <h3 class="mb-4 text-center font-bold"><%= book.author %></h3>
     <img class="mx-auto mb-6" src="<%= book.image_path %>" width="125" height="200">
-    
+    <% if book.created_by_user_id == @user.id %>
+      <%= button_to("Edit Book", edit_book_path(book), method: :get) %>
+    <% end %>
   </div>
   <% end %>
 </div>
