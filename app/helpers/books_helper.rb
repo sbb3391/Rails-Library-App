@@ -19,17 +19,27 @@ module BooksHelper
     book.book_transactions.last.reservation_end_date.strftime("%m-%d-%Y")
   end
 
+  def days_until_reservation_ends
+
+  end
+
   def availability(book)
-    if book.library_id =! nil 
-      if book.library_id != 1 && !book.book_transactions.empty?
-        "Available on #{book.book_transactions.last.reservation_end_date}"
-      else 
-        "Available for checkout"
-      end
+    if book.library_id != User.find(session[:user_id]).library.id && book.library_id != nil && !book.book_transactions.empty?
+      "Available on #{reserved_until(book)}"
     elsif book.library_id == User.find(session[:user_id]).library.id
       "This book is in your library"
     else
-      "This book is available for checkout"
+      "Available"
+    end
+  end
+
+  def availability_class(book)
+    if availability(book) == "Available"
+      "w-6/12 mb-3 text-center font-bold bg-green-500 text-white text-sm rounded-xl"
+    elsif availability(book) == "This book is in your library"
+      "w-8/12 mb-3 text-center font-bold bg-blue-500 text-white text-sm rounded-xl"
+    else
+      "w-8/12 mb-3 text-center font-bold bg-red-500 text-white text-sm rounded-xl"
     end
   end
 

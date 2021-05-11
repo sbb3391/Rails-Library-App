@@ -7,7 +7,6 @@ class MediaTransactionsController < ApplicationController
   end
 
   def create 
-    binding.pry
     lib = Library.find(params[:library_id])
     transaction_params = params[:media_transaction][:book_transactions_attributes]["0"]
     transaction_params[:reservation_end_date] = (Date.current + transaction_params[:length_days].to_i).to_time

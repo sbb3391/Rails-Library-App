@@ -12,25 +12,24 @@
   </head>
 
   <body>
-    <div class="w-screen h-12 bg-blue-200 flex justify-around">
-      <div>
-        All Books
-      </div>
-      <div>
-        New Book
-      </div>
-      <div>
-        Library
-      </div>
+ 
       <% if session[:user_id] %>
-        <div>
-          <%= link_to("Logout", 'sessions/logout') %>
+        <div class="w-screen h-12 bg-blue-200 flex justify-center">
+          <div class="mx-8">
+            <%= link_to("All Books", books_path) %>
+          </div>
+          <div class="mx-8">
+            <%= link_to("New Book", new_book_path) %>
+          </div>
+          <div class="mx-8">
+            <%= link_to("My Library", library_path(current_user.library)) %>
+          </div>
+          <div class="mx-8">
+            <%= link_to("Logout", '/sessions/logout') %>
+          </div>
         </div>
-        <div>
       <% end %>
-        
-      </div>
-    </div>
+
     <%= yield %>
   </body>
 </html>

@@ -5,7 +5,7 @@
 <% @books.order(:name).each do |book| %>
   <div class="bg-gray-100 w-3/12 h-auto mx-12 my-8 border-black border-2 rounded-xl" >
     <h2 class="text-blue-700 my-4 text-center text-3xl italic"><%= link_to "#{book.title}", book_path(book) %></h1>
-    <p><%= availability(book) %></p>
+    <p class="<%= availability_class(book) %>"><%= availability(book) %></p>
     <h3 class="mb-4 text-center font-bold"><%= book.author %></h3>
     <img class="mx-auto mb-6" src="<%= book.image_path %>" width="125" height="200">
     
