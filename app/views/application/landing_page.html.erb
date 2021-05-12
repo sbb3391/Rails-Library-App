@@ -1,7 +1,12 @@
+<div class="w-screen h-screen place-content-center flex place-content-center items-center">
+  <div class="w-6/12 my-18 h-24">
+    <h1 class="text-center">Welcome to your media library. Sign up or log in -- then stay awhile.</h1>
+    <div class="flex space-x-5 mt-8 justify-center">
+      <%= button_to("Sign up", new_user_path, method: :get) %>
+      <%= button_to("Log in", sessions_path, method: :get) %>
+    </div>
+  </div>
+</div>
 
-<h1>Welcome to your media library. Sign up or log in -- then stay awhile.</h1>
-
-<%= button_to("Sign up", new_user_path, method: :get) %>
-<%= button_to("Log in", sessions_path, method: :get) %>
 
 

@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :current_book, only: [:edit, :update]
 
   def index
-    @books = Book.includes(:main_library)
+    @books = Book.all
   end
 
   def new
@@ -42,6 +42,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def available_books
+    @books = Book.available_books
+  end
   private 
 
   def books_params

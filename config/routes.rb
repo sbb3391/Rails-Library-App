@@ -21,7 +21,12 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :books 
+  resources :books do 
+    collection do
+      get :available_books
+      get :unavailable_books
+    end
+  end
 
   resources :welcome
 
