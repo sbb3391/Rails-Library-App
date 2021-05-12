@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_214103) do
+ActiveRecord::Schema.define(version: 2021_05_11_233726) do
 
   create_table "album_transactions", force: :cascade do |t|
     t.integer "library_transaction_id"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_05_11_214103) do
     t.string "image_path", default: "https://www.anglo-egyptian.com/books_posters/defbookcover.jpg?v=1528540330"
     t.integer "library_id"
     t.integer "created_by_user_id"
+    t.integer "main_library_id", default: 1
+    t.index ["main_library_id"], name: "index_books_on_main_library_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -66,6 +68,11 @@ ActiveRecord::Schema.define(version: 2021_05_11_214103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["library_id"], name: "index_library_transactions_on_library_id"
+  end
+
+  create_table "main_libraries", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "media_transactions", force: :cascade do |t|

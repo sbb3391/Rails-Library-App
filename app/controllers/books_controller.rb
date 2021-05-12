@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :current_book, only: [:edit, :update]
 
   def index
-    @books = Book.all
+    @books = Book.includes(:main_library)
   end
 
   def new

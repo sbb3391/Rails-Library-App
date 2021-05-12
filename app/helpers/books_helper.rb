@@ -1,4 +1,8 @@
 module BooksHelper
+  def checked_out?(book)
+    true if book.library_id != nil
+  end
+  
   def checkout_class(book)
     if book.checked_out?
       "mt-6 p-2 bg-red-600 text-lg text-white rounded-xl cursor-not-allowed"
@@ -35,11 +39,11 @@ module BooksHelper
 
   def availability_class(book)
     if availability(book) == "Available"
-      "w-6/12 mb-3 text-center font-bold bg-green-500 text-white text-sm rounded-xl"
+      "w-6/12 mb-3 mx-auto text-center font-bold bg-green-500 text-white text-sm rounded-xl"
     elsif availability(book) == "This book is in your library"
-      "w-8/12 mb-3 text-center font-bold bg-blue-500 text-white text-sm rounded-xl"
+      "w-8/12 mb-3 mx-auto text-center font-bold bg-blue-500 text-white text-sm rounded-xl"
     else
-      "w-8/12 mb-3 text-center font-bold bg-red-500 text-white text-sm rounded-xl"
+      "w-8/12 mb-3 mx-auto text-center font-bold bg-red-500 text-white text-sm rounded-xl"
     end
   end
 
