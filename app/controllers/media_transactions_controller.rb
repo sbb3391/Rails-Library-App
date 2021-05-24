@@ -20,7 +20,7 @@ class MediaTransactionsController < ApplicationController
     return redirect_to library_path(lib)
   end
 
-  def show
+  def index
     @library = Library.find_by_id(params[:library_id])
     @media_transactions = @library.media_transactions
   end

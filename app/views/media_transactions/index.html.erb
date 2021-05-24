@@ -1,0 +1,13 @@
+<h1>Browse All Your Transactions:</h1>
+
+<div>
+<% @media_transactions.order(:created_at).each do |mt| %>
+  <div>
+    <h1>%<= mt.created_at.strftime("%m-%-%Y") %></h1>
+    <% mt.books.each do |book| %>
+      <h4><%= book.name %></h4>>
+    <% end %>
+    <h3>Tough!</h3>
+  </div>
+<% end %>
+</div>

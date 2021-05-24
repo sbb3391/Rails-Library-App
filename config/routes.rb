@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       get :invalid
     end
     
-    resources :media_transactions, only: [:new, :create, :show] 
+    resources :media_transactions, only: [:new, :create, :index] 
   end
 
 
