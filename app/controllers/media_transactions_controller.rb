@@ -4,6 +4,7 @@ class MediaTransactionsController < ApplicationController
     @media_transaction = @library.media_transactions.build
     @book_transaction = @media_transaction.book_transactions.build
     @book = Book.find(params["book"]["id"])
+    render "media_transactions/new"
   end
 
   def create 
@@ -13,7 +14,6 @@ class MediaTransactionsController < ApplicationController
 
     media_transaction = lib.media_transactions.build(media_transaction_params)
     media_transaction.save
-    # book_transaction = media_transaction.book_transactions.build(media_transaction_params)
     
     Book.find_by_id(transaction_params[:book_id]).update(library_id: lib.id)
 
@@ -21,7 +21,8 @@ class MediaTransactionsController < ApplicationController
   end
 
   def show
-
+    @library = Library.find_by_id(params[:library_id])
+    @media_transactions = @library.media_transactions
   end
 
   private

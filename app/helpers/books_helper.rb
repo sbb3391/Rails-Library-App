@@ -4,7 +4,7 @@ module BooksHelper
   end
   
   def checkout_class(book)
-    if book.checked_out?
+    if checked_out?(book)
       "mt-6 p-2 bg-red-600 text-lg text-white rounded-xl cursor-not-allowed"
     else
       "mt-6 p-2 bg-indigo-500 text-lg text-white rounded-xl cursor-pointer"
@@ -12,11 +12,11 @@ module BooksHelper
   end
 
   def disable_checkout_button?(book)
-    book.checked_out?
+    checked_out?(book)
   end
 
   def checkout_button_text(book)
-    book.checked_out? ? "Not Available" : "Checkout Book"
+    checked_out?(book) ? "Not Available" : "Checkout Book"
   end
 
   def reserved_until(book)

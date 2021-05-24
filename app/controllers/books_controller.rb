@@ -43,8 +43,13 @@ class BooksController < ApplicationController
   end
 
   def available_books
-    @books = Book.available_books
+    @books = Book.available
   end
+
+  def unavailable_books
+    @books = Book.unavailable
+  end
+
   private 
 
   def books_params

@@ -7,11 +7,8 @@ class Book < ApplicationRecord
   validates :author, presence: :true
   validates :description, presence: :true, length: {minimum: 100 }, allow_blank: false
 
-  scope :out_of_print, -> { where(out_of_print: true) }
-  scope :out_of_print_and_expensive, -> { out_of_print.where("price > 500") }
-
-  scope :available_books, -> { where(library_id == nil)}
-  scope :unavailable_books, -> { where(library_id != nil)}
+  scope :available, -> { where(library_id: nil) }
+  scope :unavailable, -> { where.not(library_id: nil) }
   
   # isbn regex
   # /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/

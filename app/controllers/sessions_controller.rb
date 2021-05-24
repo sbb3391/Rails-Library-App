@@ -21,8 +21,6 @@ class SessionsController < ApplicationController
       u.password = SecureRandom.hex(15)
     end
 
-    binding.pry
-
     if user.valid?
       Library.create(user_id: user.id)
       session[:user_id] = user.id
