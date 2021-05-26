@@ -42,6 +42,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    book = Book.find_by_id(params[:id])
+    book.destroy
+
+    redirect_to books_path
+  end
+
   def available_books
     @books = Book.available
   end

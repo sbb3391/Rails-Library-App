@@ -15,6 +15,9 @@
     <% if book.created_by_user_id == @user.id %>
       <%= link_to("Edit Book", edit_book_path(book), class: "mx-auto text-center mb-6") %>
     <% end %>
+    <% if book.created_by_user_id == @user.id %>
+      <%= link_to("Delete Book", book_path(book), :method => :delete) %>
+    <% end %>
   </div>
   <% end %>
 </div>

@@ -7,7 +7,6 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find_by_id(params[:id])
-
     if @library.user == @user
       render "libraries/show"
     else
