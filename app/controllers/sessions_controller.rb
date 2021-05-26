@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    
     user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid], provider: request.env['omniauth.auth'][:provider]) do |u|
+
       u.email = request.env['omniauth.auth'][:info][:email]
       u.username = request.env['omniauth.auth'][:info][:email].split("@")[0]
       u.password = SecureRandom.hex(15)

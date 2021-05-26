@@ -15,6 +15,14 @@ class LibrariesController < ApplicationController
     end
   end
 
+  def remove_book_from_library
+    library = Library.find_by_id(params[:library_id])
+    book = Book.find_by_id(params[:book][:id])
+    book.update(library_id: nil)
+
+    redirect_to library_path(library)
+  end
+
   def invalid
   end
 end

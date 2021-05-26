@@ -10,8 +10,13 @@
     <div class="w-8/12 flex flex-col max-h-48 py-2">
       <p class="text-center my-3 w-10/12 mx-auto p-2 text-xs whitespace-pre-wrap bg-red-200 rounded-lg">reservation ends on <%= reserved_until(book) %> @ midnight<p>
       <p class="my-auto mx-2 text-center whitespace-pre-wrap text-sm truncate overflow-hidden"><%= book.description %></p>
-    </div>
-    
+    </div> 
+  </div>
+  <div>
+    <%= form_with model: book, url: remove_book_from_library_library_path(library_id: @library.id), method: :patch do |f| %>
+      <%= f.hidden_field(:id) %>
+    <%= f.submit "Return Book", class: "#{checkout_class(book)}" %>
+  <% end %>
   </div>
  
 </div>

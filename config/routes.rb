@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     collection do
       get :invalid
     end
+
+    member do 
+      patch :remove_book_from_library
+    end
     
     resources :media_transactions, only: [:new, :create, :index] 
   end
