@@ -24,6 +24,9 @@
           <div class="mx-8">
             <%= link_to("My Library", library_path(current_user.library)) %>
           </div>
+          <div clas="mx-8">
+            <%= link_to("My Transactions", library_media_transactions_path(current_user.library)) %>
+          </div>
           <div class="mx-8">
             <%= link_to("Logout", '/sessions/logout', method: :post) %>
           </div>
