@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     end
 
     if user.valid?
-      Library.create(user_id: user.id)
+      Library.create(user_id: user.id) if user.library == nil
       session[:user_id] = user.id
       redirect_to books_path
     else
